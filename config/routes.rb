@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  # look for user/registrations first and then the rest
+  devise_for :users, :controllers => { :registrations => "user/registrations" }
   resources :user_stocks, except: [:show, :edit, :update]
   
   root 'welcome#index'
